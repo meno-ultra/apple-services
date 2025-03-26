@@ -1,67 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get URL parameters to determine which plan was selected
+    // Get URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const plan = urlParams.get('plan');
     const price = urlParams.get('price');
 
     // Update the order summary
-    if (plan && price) {
-        document.getElementById('plan-name').textContent = plan;
-        document.getElementById('plan-price').textContent = price;
-    }
+    document.getElementById('plan-name').textContent = plan || 'No plan selected';
+    document.getElementById('plan-price').textContent = price || '$0.00';
 
-    // Payment method details
-    const paymentDetails = {
+    // Payment method buttons
+    const paymentButtons = document.querySelectorAll('.payment-option');
+    const paymentDetails = document.getElementById('payment-details');
+
+    // Payment details for each method
+    const paymentInfo = {
         vodafone: {
             title: 'Vodafone Cash Payment',
-            instructions: 'Send the payment to the following Vodafone Cash number:',
-            number: '01002667790'
+            details: 'Please send the payment to: 01002667790\n\nAfter sending, please contact us with the transaction ID.',
+            contact: 'WhatsApp: +20 100 266 7790'
         },
         etisalat: {
             title: 'Etisalat Cash Payment',
-            instructions: 'Send the payment to the following Etisalat Cash number:',
-            number: '01113579824'
+            details: 'Please send the payment to: 01113579824\n\nAfter sending, please contact us with the transaction ID.',
+            contact: 'WhatsApp: +20 111 357 9824'
         },
         instapay: {
             title: 'InstaPay Payment',
-            instructions: 'Send the payment to the following InstaPay account:',
-            account: '01002667790'
+            details: 'Please send the payment to: 01002667790\n\nAfter sending, please contact us with the transaction ID.',
+            contact: 'WhatsApp: +20 100 266 7790'
         },
         binance: {
             title: 'Binance Payment',
-            instructions: 'Send the payment to the following Binance wallet address:',
-            wallet: 'bnb1234567890abcdef'
+            details: 'Please send the payment in USDT (TRC20) to:\n\nbnb1234567890abcdef\n\nAfter sending, please contact us with the transaction ID.',
+            contact: 'WhatsApp: +20 100 266 7790'
         }
     };
 
-    // Add click handlers to payment options
-    document.querySelectorAll('.payment-option').forEach(option => {
-        option.addEventListener('click', function() {
-            // Remove active class from all options
-            document.querySelectorAll('.payment-option').forEach(opt => {
-                opt.style.background = '#1a1a1a';
-            });
+    // Add click event listeners to payment buttons
+    paymentButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            paymentButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
             
-            // Add active class to selected option
-            this.style.background = '#ff3333';
+            // Get payment method from button class
+            const method = button.classList[1]; // vodafone, etisalat, etc.
             
-            // Get payment method from class name
-            const method = this.classList[1];
-            const details = paymentDetails[method];
-            
-            // Update payment details section
-            const detailsSection = document.getElementById('payment-details');
-            detailsSection.innerHTML = `
+            // Display payment details
+            const info = paymentInfo[method];
+            paymentDetails.innerHTML = `
                 <div class="payment-info">
-                    <h4>${details.title}</h4>
-                    <p>${details.instructions}</p>
+                    <h4>${info.title}</h4>
+                    <p>Amount to Pay: <span class="price">${price}</span></p>
+                    <p>${info.details}</p>
                     <div class="wallet-address">
-                        ${details.number || details.account || details.wallet}
+                        ${info.contact}
                     </div>
-                    <p>After sending the payment, please contact us on Discord with your transaction details.</p>
                 </div>
             `;
-            detailsSection.classList.add('active');
+            
+            // Show payment details section
+            paymentDetails.classList.add('active');
         });
     });
 }); 
