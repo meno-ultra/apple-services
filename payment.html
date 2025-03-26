@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mazen.css">
+    <link rel="stylesheet" href="payment.css">
+    <title>M&M Cell Scripts - Payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a class="logo" href="mazen.html">M&M Cell Scripts</a>
+            <ul>
+                <li><a href="mazen.html#pricing">Pricing</a></li>
+                <li><a href="mazen.html#features">Features</a></li>
+                <li><a href="mazen.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="payment-content">
+            <h2>Complete Your Purchase</h2>
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="selected-plan">
+                    <span id="plan-name">Selected Plan</span>
+                    <span id="plan-price">$0.00</span>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Select Payment Method</h3>
+                <div class="payment-grid">
+                    <button class="payment-option vodafone">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Vodafone Cash</span>
+                    </button>
+                    <button class="payment-option etisalat">
+                        <i class="fas fa-mobile"></i>
+                        <span>Etisalat Cash</span>
+                    </button>
+                    <button class="payment-option instapay">
+                        <i class="fas fa-wallet"></i>
+                        <span>InstaPay</span>
+                    </button>
+                    <button class="payment-option binance">
+                        <i class="fab fa-bitcoin"></i>
+                        <span>Binance</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="payment-details" id="payment-details">
+                <!-- This will be populated by JavaScript when a payment method is selected -->
+            </div>
+        </div>
+
+        <footer id="contact">
+            <h3>Need Help?</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100072105520347&locale=ar_AR" target="_blank" class="social-btn">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.tiktok.com/@1xmozax1" target="_blank" class="social-btn">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://discord.com/users/mazenmahmoud6550" target="_blank" class="social-btn">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+            <div class="contact-info">
+                <p>Discord: mazenmahmoud6550</p>
+                <p>Available 24/7 for Support</p>
+            </div>
+        </footer>
+    </div>
+    <script src="payment.js"></script>
+</body>
+</html> 
