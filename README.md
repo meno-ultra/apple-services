@@ -14,8 +14,8 @@ Professional Apple ID and iCloud account creation services.
 ## Packages
 
 - Single Account: $9.99
-- 5 Accounts: $49.99
-- 15 Accounts: $149.99
+- Single Account: $49.99
+- Single Account: $149.99
 
 ## Contact
 
